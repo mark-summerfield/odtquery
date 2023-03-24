@@ -1,7 +1,7 @@
 # odtquery
 
-A Go application for printing OpenDocument Text (`.odt`) metadata and raw
-XML.
+A Go command line tool for printing OpenDocument Text (`.odt`) metadata and
+raw XML.
 
 This uses the [odt](https://pkg.go.dev/github.com/mark-summerfield/odt)
 library.
