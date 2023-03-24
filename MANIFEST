@@ -2,4 +2,6 @@ odtquery.go
 
 README.md
 
+go.mod # TODO get rid of replace
+
 st.sh
