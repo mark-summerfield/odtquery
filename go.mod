@@ -5,10 +5,10 @@ go 1.20
 replace github.com/mark-summerfield/odt => /home/mark/app/go/odt/lib
 
 require (
-	github.com/mark-summerfield/clip v0.8.0
+	github.com/mark-summerfield/clip v0.9.0
 	github.com/mark-summerfield/gong v1.0.1
 	github.com/mark-summerfield/gset v0.8.0
-	github.com/mark-summerfield/odt v0.0.0-20230324075126-14fbdf3ef93c
+	github.com/mark-summerfield/odt v0.0.0-20230324090534-62e4855c53ed
 	golang.org/x/exp v0.0.0-20230321023759-10a507213a29
 )
 
