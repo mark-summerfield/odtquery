@@ -53,9 +53,9 @@ func process(filename string, config *config, indent bool) error {
 
 func verify(doc *odt.Odt, indent bool) {
 	actualFiles := gset.New[string]()
-	for _, file := range doc.Files {
-		if expectedFiles.Contains(file.Name) {
-			actualFiles.Add(file.Name)
+	for name := range doc.Files {
+		if expectedFiles.Contains(name) {
+			actualFiles.Add(name)
 		}
 	}
 	if indent {
@@ -75,15 +75,15 @@ func verify(doc *odt.Odt, indent bool) {
 }
 
 func list(doc *odt.Odt, indent bool) {
-	for _, file := range doc.Files {
+	for name, text := range doc.Files {
 		if indent {
 			fmt.Print("  ")
 		}
-		fmt.Print(file.Name)
-		if len(file.Text) == 0 {
+		fmt.Print(name)
+		if len(text) == 0 {
 			fmt.Println(" (empty)")
 		} else {
-			fmt.Printf(" (%s bytes)\n", gong.Commas(len(file.Text)))
+			fmt.Printf(" (%s bytes)\n", gong.Commas(len(text)))
 		}
 	}
 }
