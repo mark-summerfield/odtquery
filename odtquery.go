@@ -7,7 +7,6 @@ import (
 	_ "embed"
 	"errors"
 	"fmt"
-	"strings"
 
 	"github.com/mark-summerfield/clip"
 	"github.com/mark-summerfield/gong"
@@ -64,9 +63,7 @@ func verify(doc *odt.Odt, indent bool) {
 	}
 	if len(actualFiles) < len(expectedFiles) {
 		missing := expectedFiles.Difference(actualFiles).ToSlice()
-		slices.SortFunc(missing, func(a, b string) bool {
-			return strings.ToLower(a) < strings.ToLower(b)
-		})
+		slices.SortFunc(missing, gong.LessFold)
 		fmt.Print(gong.Italic("failed verification — missing files:"))
 		for _, name := range missing {
 			fmt.Print(" ", name)
@@ -111,7 +108,7 @@ func makeParser() *clip.Parser {
 	parser := clip.NewParserVersion(Version)
 	parser.PositionalHelp = ".odt files to query"
 	parser.PositionalCount = clip.OneOrMorePositionals
-	_ = parser.SetPositionalVarName("ODT_FILE")
+	parser.MustSetPositionalVarName("ODT_FILE")
 	parser.LongDesc = "Queries .odt files."
 	return &parser
 }
